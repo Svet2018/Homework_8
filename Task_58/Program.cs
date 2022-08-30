@@ -15,3 +15,70 @@
 //20 81 8 6
 //56 8 4 24
 //10 6 24 49
+
+
+
+void GenerateArray(int [,] array)
+{
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+        {
+           array[i,j] = new Random().Next(1,10);
+        }       
+    } 
+}
+
+
+void PrintArray(int [,] array)
+{
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+        {
+            System.Console.Write($"{array[i,j]} ");
+        }
+        System.Console.WriteLine();
+    }
+}
+
+
+int[,] MultArray(int [,] array1, int [,] array2)
+{
+    int[,] array = new int [array1.GetLength(0),array1.GetLength(1)];
+
+    for(int i = 0; i < array1.GetLength(0); i++)
+    {
+        for(int j = 0; j < array1.GetLength(1); j++)
+        {
+           array[i,j] = array1[i,j] * array2[i,j];
+        }       
+    } 
+    PrintArray(array);
+    return array;   
+}
+
+
+System.Console.WriteLine("Введите количество строк массива. ");
+int row = Convert.ToInt32(Console.ReadLine());
+System.Console.WriteLine("Введите количество столбцов массива. ");
+int col = Convert.ToInt32(Console.ReadLine());
+
+int [,] newArray1 = new int [row, col];
+int [,] newArray2 = new int [row, col];
+
+System.Console.WriteLine();
+System.Console.WriteLine($"Сгененрированы массивы:");
+System.Console.WriteLine();
+GenerateArray(newArray1);
+PrintArray(newArray1);
+System.Console.WriteLine();
+GenerateArray(newArray2);
+PrintArray(newArray2);
+System.Console.WriteLine();
+System.Console.WriteLine($"Произведение двух сгененрированных массивов будет равно следующему массиву:");
+System.Console.WriteLine();
+MultArray(newArray1, newArray2);
+System.Console.WriteLine();
+
+
